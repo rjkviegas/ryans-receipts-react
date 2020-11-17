@@ -7,11 +7,6 @@
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
 
 .App-header {
   background-color: #282c34;
@@ -24,15 +19,22 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
-}
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  .total {
+    text-align:right;
   }
-  to {
-    transform: rotate(360deg);
+
+  #table {
+    border:1px solid red;
+    border-collapse:separate;
   }
-}
+
+  table.center {
+    margin-left:auto; 
+    margin-right:auto;
+  }
+
+  #table th, #table td {
+    border:1px solid #000;
+  }
+
