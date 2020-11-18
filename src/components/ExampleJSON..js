@@ -1,5 +1,5 @@
 import React from 'react';
-import example from '../menuAndOrder.json';
+import example from '../exampleJson.json';
 
 function ExampleJSON() {
     return (
