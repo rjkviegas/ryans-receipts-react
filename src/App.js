@@ -2,6 +2,8 @@ import React, {useState} from 'react';
 import {useForm} from 'react-hook-form';
 import Receipt from './components/Receipt';
 import './App.css';
+import Logo from './components/Logo';
+import ExampleJSON from './components/ExampleJSON.';
 
 function App() {
   const {register, handleSubmit} = useForm();
@@ -20,7 +22,6 @@ function App() {
   }
 
   if (data) {
-    // console.log(data.receipt)
     return (
       <div className="App">
         <Receipt receipt={data.receipt} />
@@ -29,12 +30,30 @@ function App() {
   }
   return (
     <div className="App">
-    <img src="ryansreceipts.PNG" alt="logo" />
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <textarea placeholder="Menu and Order JSON" name="receipt" ref={register} rows="25" cols="100"/>
+      <Logo />
       <br />
-      <button>Submit</button>
-    </form>
+      Welcome to Ryan's Receipts, a website that uses an receipt generating API to produce a receipt.
+      <br />
+      Please submit a menu and order in the JSON format that can be seen below. 
+      <br />
+      <br />
+    <div className="grid-container">
+    <div className="float-child">
+      <ExampleJSON />
+    </div>
+    <div className="float-child">
+      <br />
+      <br />
+      <br />
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <textarea placeholder="Menu and Order JSON" name="receipt" ref={register} rows="40" cols="50"/>
+        <br />
+        <button>Submit</button>
+      </form>
+    </div>
+    </div>
+    
+    
     </div>
   )
 }
