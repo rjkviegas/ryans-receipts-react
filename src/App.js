@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import {useForm} from 'react-hook-form';
 import Receipt from './components/Receipt';
 import './App.css';
@@ -8,10 +8,6 @@ import ExampleJSON from './components/ExampleJSON.';
 function App() {
   const {register, handleSubmit} = useForm();
   const [data, setData] = useState()
-
-  useEffect(() => {
-    document.title = "Ryan's Receipts"
-  }, []);
 
   const onSubmit = (formData) => {
     const jsonObj = JSON.parse(formData.receipt)
