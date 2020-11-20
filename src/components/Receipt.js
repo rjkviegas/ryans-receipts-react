@@ -20,7 +20,7 @@ export default function Receipt({ receipt}) {
             <h5>{phoneNumFormat(receipt.phone)}</h5>
             <h3>Customer: {receipt.customer}</h3>
             <h3>Items Ordered</h3>
-            <table id="table" class="center">
+            <table id="table" className="center">
                 <thead>
                     <tr>
                         <th>Item</th>
