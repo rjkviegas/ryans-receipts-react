@@ -1,12 +1,34 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import example from '../exampleJson.json';
 
 function ExampleJSON() {
+    const [copySuccess, setCopySuccess] = useState('');
+    const textAreaRef = useRef(null);
+
+    function copyToClipboard(e) {
+        textAreaRef.current.select();
+        document.execCommand('copy');
+        e.target.focus();
+        setCopySuccess('Copied!');
+    };
     return (
-        <>
-            <h2>Example Menu and Order JSON Format</h2>
-            <pre>{JSON.stringify(example, null, ' ') }</pre>
-        </>
+        <div>
+            <h4>Example Menu and Order JSON Format</h4>
+            {
+                document.queryCommandSupported('copy') &&
+                <div>
+                    <button onClick={copyToClipboard}>Copy</button> 
+                    {copySuccess}
+                </div>
+            }
+            <textarea 
+                ref={textAreaRef} 
+                rows="30" 
+                cols="50"
+            >
+                {JSON.stringify(example, null, ' ') }
+            </textarea>
+        </div>
     )
 }
 

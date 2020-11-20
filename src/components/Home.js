@@ -39,13 +39,12 @@ function Home() {
             <ExampleJSON />
           </div>
           <div className="float-child">
-            <br />
-            <br />
-            <br />
+            <h4>Menu and Order JSON Form</h4>
             <form onSubmit={handleSubmit(onSubmit)}>
-              <textarea placeholder="Menu and Order JSON" name="receipt" ref={register} rows="40" cols="50"/>
-              <br />
-              <button>Submit</button>
+                <button>Submit</button>
+                <br />
+                <textarea placeholder="Menu and Order JSON" name="receipt" ref={register} rows="30" cols="50"/>
+                <br />
             </form>
           </div>
         </div>

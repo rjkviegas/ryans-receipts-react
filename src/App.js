@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="App">
       <header>
-        <h1>Ryan's Receipts</h1>
+        {/* <h1>Ryan's Receipts</h1> */}
         <Logo />
       </header>
       <Home className='container'/>
