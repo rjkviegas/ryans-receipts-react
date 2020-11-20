@@ -15,11 +15,10 @@ export default function Receipt({ receipt}) {
 
     return (
         <section id={receipt.shopName.toLowerCase().replace(/ /g, "-")}>
-            <h1>{receipt.shopName}</h1>
-            <h5>{receipt.address}</h5>
-            <h5>{phoneNumFormat(receipt.phone)}</h5>
-            <h3>Customer: {receipt.customer}</h3>
-            <h3>Items Ordered</h3>
+            <h3>{receipt.shopName}</h3>
+            <p>{receipt.address}</p>
+            <p>{phoneNumFormat(receipt.phone)}</p>
+            <p>Customer: {receipt.customer}</p>
             <table id="table" className="center">
                 <thead>
                     <tr>
