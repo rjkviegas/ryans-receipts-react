@@ -1,25 +1,28 @@
 import React, {useState} from 'react';
 import {useForm} from 'react-hook-form';
 import Receipt from './components/Receipt';
-import './App.css';
 import Logo from './components/Logo';
 import ExampleJSON from './components/ExampleJSON.';
 import Description from './components/Description';
+import './App.css';
 
 function App() {
   const {register, handleSubmit} = useForm();
   const [data, setData] = useState()
 
   const onSubmit = (formData) => {
-    const jsonObj = JSON.parse(formData.receipt)
-    fetch('https://api.ryansreceipts.com/makereceipt', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(jsonObj)
-    })
-      .then(response => response.json())
+    try {
+      fetch('https://api.ryansreceipts.com/makereceipt', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(JSON.parse(formData.receipt))
+      })
+      .then(res => res.json())
       .then(setData)
-      .catch(console.error)
+    } catch(error) {
+      alert('We had a problem processing your menu and order data.\nPlease check the format of your JSON and try again')
+      console.error(error)
+    }
   }
 
   if (data) {
