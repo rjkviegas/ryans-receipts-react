@@ -8,7 +8,7 @@ function Home() {
   const {register, handleSubmit} = useForm();
   const [data, setData] = useState()
 
-  const onSubmit = (formData) => {
+  const onSubmit = formData => {
     try {
       fetch('https://api.ryansreceipts.com/makereceipt', {
         method: 'POST',
@@ -23,10 +23,15 @@ function Home() {
     }
   }
 
+  function resetData() {
+    setData(data => undefined);
+  }
+
   if (data) {
     return (
       <div className="container">
         <Receipt receipt={data.receipt} />
+        <button onClick={resetData}>Go back</button>
       </div>
     )
   }

@@ -1,17 +1,18 @@
 import React from 'react';
-import Logo from './components/Logo';
+import { BrowserRouter as Router, Link } from 'react-router-dom';
 import Home from './components/Home';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header>
-        {/* <h1>Ryan's Receipts</h1> */}
-        <Logo />
-      </header>
-      <Home className='container'/>
-    </div>
+    <Router>
+      <div className="App">
+        <header>
+          <Link to="/"><img src="ryansreceipts.PNG" alt="Ryan's Receipt Logo" /></Link>
+        </header>
+        <Home className='container'/>
+      </div>
+    </Router>
   )
 }
 
