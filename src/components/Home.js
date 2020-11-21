@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import {useForm} from 'react-hook-form';
 import Receipt from './Receipt';
 import ExampleJSON from './ExampleJSON.';
-import Description from './Description';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -51,7 +50,7 @@ function Home() {
       <Container>
         <Row className="justify-content-md-center">
           <Col md="auto">
-            <Description />
+          <p>Please submit a menu and order in the JSON format that can be seen below.</p>
           </Col>
         </Row>
         <Row className="justify-content-md-center">
