@@ -1,6 +1,10 @@
 import React from 'react';
+import Table from 'react-bootstrap/Table';
+import Accordion from 'react-bootstrap/Accordion';
+import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
 
-export default function Receipt({ receipt}) {
+function Receipt({ receipt}) {
 
     function phoneNumFormat (aPhoneNum) {
         return `+${aPhoneNum[0]} ` +
@@ -14,12 +18,32 @@ export default function Receipt({ receipt}) {
     }
 
     return (
-        <section id={receipt.shopName.toLowerCase().replace(/ /g, "-")}>
-            <h3>{receipt.shopName}</h3>
-            <p>{receipt.address}</p>
-            <p>{phoneNumFormat(receipt.phone)}</p>
+        <div>
+            <Accordion defaultActiveKey="1">
+                <Card>
+                    <Card.Header>
+                        <Accordion.Toggle as={Button} variant="link" eventKey="0">
+                            {receipt.shopName}
+                        </Accordion.Toggle>
+                    </Card.Header>
+                    <Accordion.Collapse eventKey="0">
+                        <Card.Body>
+                            {receipt.address}
+                            <br />
+                            {phoneNumFormat(receipt.phone)}
+                        </Card.Body>
+                    </Accordion.Collapse>
+                </Card>
+            </Accordion>
             <p>Customer: {receipt.customer}</p>
-            <table id="table" className="center">
+            <Table 
+                id="table"
+                className="center"
+                striped
+                bordered
+                hover
+                size="sm"
+            >
                 <thead>
                     <tr>
                         <th>Item</th>
@@ -45,11 +69,11 @@ export default function Receipt({ receipt}) {
                     })}
                     <tr>
                         <th className="total" colSpan="5">Pre Tax Total :</th>
-                        <td>{usd(receipt.preTaxTotal)}</td>
+                        <th>{usd(receipt.preTaxTotal)}</th>
                     </tr>
                     <tr>
                         <th className="total" colSpan="5">Tax ({receipt.taxRate}%) :</th>
-                        <td>{usd(receipt.taxTotal)}</td>
+                        <th>{usd(receipt.taxTotal)}</th>
                     </tr>
                     {receipt.totalDiscount &&
                     <tr>
@@ -72,7 +96,9 @@ export default function Receipt({ receipt}) {
                         <th>{usd(receipt.change)}</th>
                     </tr>   
                 </tfoot>
-            </table>
-        </section>
+            </Table>
+        </div>
     )
 }
+
+export default Receipt;

@@ -1,13 +1,12 @@
 import React, { useRef, useState } from 'react';
 import example from '../exampleJson.json';
+import Button from 'react-bootstrap/Button';
 
 function ExampleJSON() {
     const [copySuccess, setCopySuccess] = useState('');
     const textAreaRef = useRef(null);
 
     const copyToClipboard = e => {
-        console.log(textAreaRef)
-        console.log(textAreaRef.current)
         textAreaRef.current.select();
         document.execCommand('copy');
         e.target.focus();
@@ -16,18 +15,23 @@ function ExampleJSON() {
 
     return (
         <div>
-            <h4>Example Menu and Order JSON Format</h4>
+            <h4>Example JSON Format</h4>
             {
                 document.queryCommandSupported('copy') &&
                 <div>
-                    <button onClick={copyToClipboard}>Copy</button> 
+                    <Button 
+                        variant="primary"
+                        onClick={copyToClipboard}
+                    >
+                        Copy
+                    </Button> 
                     {copySuccess}
                 </div>
             }
             <textarea 
                 ref={textAreaRef} 
                 rows="30" 
-                cols="50"
+                cols="35"
             >
                 {JSON.stringify(example, null, ' ') }
             </textarea>

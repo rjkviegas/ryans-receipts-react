@@ -3,6 +3,10 @@ import {useForm} from 'react-hook-form';
 import Receipt from './Receipt';
 import ExampleJSON from './ExampleJSON.';
 import Description from './Description';
+import Button from 'react-bootstrap/Button';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 function Home() {
   const {register, handleSubmit} = useForm();
@@ -29,30 +33,53 @@ function Home() {
 
   if (data) {
     return (
-      <div className="container">
-        <Receipt receipt={data.receipt} />
-        <button onClick={resetData}>Go back</button>
+      <div>
+        <Container>
+          <Row className="justify-content-md-center">
+            <Col md="auto">
+              <Receipt receipt={data.receipt} />
+              <Button variant="primary" onClick={resetData}>Go back</Button>
+            </Col>
+          </Row>
+        </Container>
       </div>
     )
   }
 
   return (
     <div>
-      <Description />
-        <div className="grid-container">
-          <div className="float-child">
+      <Container>
+        <Row className="justify-content-md-center">
+          <Col md="auto">
+            <Description />
+          </Col>
+        </Row>
+        <Row className="justify-content-md-center">
+          <Col xs lg="4">
             <ExampleJSON />
-          </div>
-          <div className="float-child">
+          </Col>
+          <Col xs lg="4">
             <h4>Menu and Order JSON Form</h4>
-            <form onSubmit={handleSubmit(onSubmit)}>
-                <button>Submit</button>
-                <br />
-                <textarea placeholder="Menu and Order JSON" name="receipt" ref={register} rows="30" cols="50"/>
-                <br />
+            <form>
+              <Button 
+                variant="warning"
+                onClick={handleSubmit(onSubmit)}
+              >
+                Submit
+              </Button>
+              <br />
+              <textarea 
+                placeholder="Menu and Order JSON"
+                name="receipt"
+                ref={register}
+                rows="30" 
+                cols="35"
+              />
+              <br />
             </form>
-          </div>
-        </div>
+          </Col>
+        </Row>
+      </Container>
     </div>
   )
 }
